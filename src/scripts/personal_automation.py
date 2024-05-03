@@ -39,10 +39,10 @@ def reset_daily_chores():
     api_token = os.environ['TRELLO_API_TOKEN']
 
     # The 'todo' list id in the chores board
-    list_id = '646bdffeac1b638e9ed6e394'
+    list_id = os.environ['TRELLO_LIST_ID']
 
     # The 'chores' board ID
-    board_id = "646bdff00c39cb8cd1e33567"
+    board_id = os.environ['TRELLO_BOARD_ID']    
 
     # Get all the cards on this board 
     url =  f'https://api.trello.com/1/boards/{board_id}/cards?key={api_key}&token={api_token}'
