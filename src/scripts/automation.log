@@ -1,1 +1,43 @@
 INFO - 04/27/2024 06:32:27 PM Starting daily chore reset
+INFO - 05/03/2024 12:54:25 PM Starting coffee charge
+INFO - 05/03/2024 12:54:25 PM Appending coffee charge to the spreadsheet: ['5/1/2024', 58.27]
+INFO - 05/03/2024 12:55:44 PM Starting coffee charge
+INFO - 05/03/2024 12:55:44 PM Appending coffee charge to the spreadsheet: ['5/1/2024', 58.27]
+INFO - 05/03/2024 12:58:25 PM Starting coffee charge
+INFO - 05/03/2024 12:58:25 PM Appending coffee charge to the spreadsheet: ['5/1/2024', 58.27]
+INFO - 05/03/2024 01:00:27 PM Starting coffee charge
+INFO - 05/03/2024 01:00:27 PM Appending coffee charge to the spreadsheet: ['5/1/2024', 58.27]
+INFO - 05/03/2024 01:01:03 PM Starting coffee charge
+INFO - 05/03/2024 01:01:03 PM Appending coffee charge to the spreadsheet(automation-test): ['5/1/2024', 58.27]
+INFO - 05/03/2024 01:04:31 PM Starting coffee charge
+INFO - 05/03/2024 01:04:31 PM Appending coffee charge to the spreadsheet(automation-test): ['5/1/2024', 58.27]
+INFO - 05/03/2024 01:09:08 PM Starting coffee charge
+INFO - 05/03/2024 01:09:08 PM Appending coffee charge to the spreadsheet(automation-test): ['5/1/2024', 58.27]
+INFO - 05/03/2024 01:09:10 PM Update successful
+INFO - 05/03/2024 01:09:53 PM Starting coffee person payment
+INFO - 05/03/2024 01:09:53 PM Appending person payment to the spredsheetautomation-test: ['Steve', '5/1/2024', 20]
+INFO - 05/03/2024 01:10:11 PM Starting coffee charge
+INFO - 05/03/2024 01:10:11 PM Appending coffee charge to the spreadsheet(automation-test): ['5/1/2024', 58.27]
+INFO - 05/03/2024 01:10:12 PM Update successful
+INFO - 05/03/2024 01:10:25 PM Starting coffee person payment
+INFO - 05/03/2024 01:10:25 PM Appending person payment to the spredsheetautomation-test: ['Steve', '5/1/2024', 20]
+INFO - 05/03/2024 01:10:26 PM Update successful!
+INFO - 05/03/2024 01:10:58 PM Starting coffee person payment
+INFO - 05/03/2024 01:10:58 PM Appending person payment to the spredsheetautomation-test: ['Steve', '5/1/2024', 20]
+INFO - 05/03/2024 01:11:42 PM Starting coffee person payment
+INFO - 05/03/2024 01:11:42 PM Appending person payment to the spredsheetautomation-test: ['Steve', '5/1/2024', 20]
+INFO - 05/03/2024 01:11:43 PM Update successful!
+INFO - 05/03/2024 01:14:53 PM Starting coffee charge
+INFO - 05/03/2024 01:14:53 PM Appending coffee charge to the spreadsheet(automation-test): [datetime.date(2024, 5, 3), 58.27]
+INFO - 05/03/2024 01:15:41 PM Starting coffee charge
+INFO - 05/03/2024 01:15:41 PM Appending coffee charge to the spreadsheet(automation-test): ['2024-05-03', 58.27]
+INFO - 05/03/2024 01:15:43 PM Update successful
+INFO - 05/03/2024 01:16:13 PM Starting coffee person payment
+INFO - 05/03/2024 01:16:13 PM Appending person payment to the spredsheetautomation-test: ['Steve', '2024-05-03', 20]
+INFO - 05/03/2024 01:16:15 PM Update successful!
+INFO - 05/03/2024 01:24:57 PM Starting coffee person payment
+INFO - 05/03/2024 01:24:57 PM Appending person payment to the spredsheet: ['mike', '2024-05-03', '15']
+INFO - 05/03/2024 01:24:58 PM Update successful!
+INFO - 05/03/2024 01:27:05 PM Starting coffee charge
+INFO - 05/03/2024 01:27:05 PM Appending coffee charge to the spreadsheet: ['2024-05-03', '78.56']
+INFO - 05/03/2024 01:27:06 PM Update successful
