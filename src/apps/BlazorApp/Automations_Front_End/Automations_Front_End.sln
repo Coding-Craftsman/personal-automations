@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automations_Front_End", "Automations_Front_End\Automations_Front_End.csproj", "{80317CA9-56DC-4339-BB59-EB0894B3DF8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automations_Front_End.Client", "Automations_Front_End.Client\Automations_Front_End.Client.csproj", "{071374E2-E8ED-4B9E-8CC1-E447CC71260C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{80317CA9-56DC-4339-BB59-EB0894B3DF8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80317CA9-56DC-4339-BB59-EB0894B3DF8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80317CA9-56DC-4339-BB59-EB0894B3DF8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80317CA9-56DC-4339-BB59-EB0894B3DF8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{071374E2-E8ED-4B9E-8CC1-E447CC71260C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{071374E2-E8ED-4B9E-8CC1-E447CC71260C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{071374E2-E8ED-4B9E-8CC1-E447CC71260C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{071374E2-E8ED-4B9E-8CC1-E447CC71260C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {212E6970-0C65-46BB-8A06-0A33CCE81F64}
+	EndGlobalSection
+EndGlobal

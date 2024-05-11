@@ -1,110 +1,11 @@
 import datetime
-import os
-import requests
-import json
 import sys
 import logging
-import gspread
-from oauth2client.service_account import ServiceAccountCredentials
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(filename='automation.log', encoding='utf-8', level=logging.INFO, format='%(levelname)s - %(asctime)s %(message)s', datefmt='%m/%d/%Y %I:%M:%S %p')
 
-#-------------------------------------------------------------------------------------
-# Begin Trello automation functions
-#-------------------------------------------------------------------------------------
-# Updates all the checklist items on a card as incomplete
-def mark_checklist_incomplete(api_key, api_token, card_id, check_item_id):
-    incomplete_url = f"https://api.trello.com/1/cards/{card_id}/checkItem/{check_item_id}"
-
-    data = {
-        'key': f'{api_key}',
-        'token': f'{api_token}',
-        'state': 'incomplete'
-    }
-
-    requests.put(incomplete_url, data=data)
-
-# makes sure the provided card is in the right list on the board
-def move_card_to_list(api_key, api_token, card_id, list_id):
-    update_card_url = f'https://api.trello.com/1/cards/{card_id}'
-
-    data = {
-        'key': f'{api_key}',
-        'token': f'{api_token}',        
-        'idList':f'{list_id}'
-    }
-
-    requests.put(update_card_url, data=data)
-
-def reset_daily_chores():
-    print("Resetting Trello board...")
-
-    # Get the Trello api_key and api_token from the enviornment variable
-    api_key = os.environ['TRELLO_API_KEY']
-    api_token = os.environ['TRELLO_API_TOKEN']
-
-    # The 'todo' list id in the chores board
-    list_id = os.environ['TRELLO_LIST_ID']
-
-    # The 'chores' board ID
-    board_id = os.environ['TRELLO_BOARD_ID']    
-
-    # Get all the cards on this board 
-    url =  f'https://api.trello.com/1/boards/{board_id}/cards?key={api_key}&token={api_token}'
-
-    response = requests.get(url)
-    cards = json.loads(response.content)
-
-    # For each card in the board, if it has the label named 'Daily' make sure all the checklist
-    #  items are unchecked and move it to the todo list
-    for card in cards:
-        for label in card['labels']:
-            if label['name'] == 'Daily':
-                move_card_to_list(api_key, api_token, card['id'], list_id)
-
-                for check_item in card['checkItemStates']:
-                    mark_checklist_incomplete(api_key, api_token, card['id'], check_item['idCheckItem'])
-
-#-------------------------------------------------------------------------------------
-# End Trello automation functions
-#-------------------------------------------------------------------------------------
-
-#-------------------------------------------------------------------------------------
-# Begin Coffee Spreadsheet Automation Functions
-#-------------------------------------------------------------------------------------
-
-def coffee_spreadsheet_setup():
-    path_to_keyfile = os.environ['GOOGLE_SHEETS_KEY_PATH']
-
-    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive.file", "https://www.googleapis.com/auth/drive"]
-
-    creds = ServiceAccountCredentials.from_json_keyfile_name(path_to_keyfile, scope)
-    client = gspread.authorize(creds)
-
-    return client
-
-def insert_coffee_charge(client, data, doc_key):
-    logger.info(f'Appending coffee charge to the spreadsheet: {data}')
-
-    sheet = client.open_by_key(doc_key).get_worksheet(0)
-
-    sheet.append_row(data)
-
-    logger.info("Update successful")
-
-def insert_person_payment(client, data, doc_key):
-    logger.info(f'Appending person payment to the spredsheet: {data}')
-
-    sheet = client.open_by_key(doc_key).get_worksheet(1)
-
-    sheet.append_row(data)
-
-    logger.info('Update successful!')
-
-#-------------------------------------------------------------------------------------
-# End Coffee Spreadsheet Automation Functions
-#-------------------------------------------------------------------------------------
+coffee_spreadsheet_id = '16T_HL153YOK-iOx5XALIXKiSak1bX_pcPLxWawwXqak'
 
 def display_help():
     print("")
@@ -129,20 +30,33 @@ def main():
 
         match param:
             case "trello-reset":
+                # Import the trello_automation.py script
+                import trello_automations as trello_automations
+
                 logger.info('Starting daily chore reset')
-                reset_daily_chores()
+                trello_automations.reset_daily_chores()
             case "coffee-insert-charge":
+                # import the coffee_automations.py
+                import coffee_automations as coffee_automations
+
                 # This function requires one more parameter of the value of the coffee
                 if(len(sys.argv) >= 3):
                     amount = sys.argv[2]
 
                     logger.info('Starting coffee charge')
-                    client = coffee_spreadsheet_setup()
-                    data = [str(datetime.date.today()), amount]
-                    insert_coffee_charge(client, data, '1pQblkNchcFNn1MSDa192jps62etW2NW4xUYDjb9VU5A')
+                    client = coffee_automations.coffee_spreadsheet_setup()
+
+                    date_string = str(datetime.date.today())
+                    print(date_string)
+                    data = [date_string, amount]
+
+                    coffee_automations.insert_coffee_charge(client, data, coffee_spreadsheet_id, logger)
                 else:
                     print('You must provide the amount the coffee costs to insert into the spreadsheet')
             case "coffee-person-payment":
+                # Import the trello_automation.py script
+                import coffee_automations as coffee_automations
+
                 # When this function runs, there must be two more arguments to the script 
                 #  the first one is the person's name, and then second is the amount paid
                 if(len(sys.argv) >=4):
@@ -150,9 +64,9 @@ def main():
                     amount = sys.argv[3]
 
                     logger.info('Starting coffee person payment')
-                    client = coffee_spreadsheet_setup()
-                    data = [name, str(datetime.date.today()), amount]
-                    insert_person_payment(client, data, '1pQblkNchcFNn1MSDa192jps62etW2NW4xUYDjb9VU5A')
+                    client = coffee_automations.coffee_spreadsheet_setup()
+                    data = [name, amount, str(datetime.date.today())]
+                    coffee_automations.insert_person_payment(client, data, coffee_spreadsheet_id, logger)
                 else:
                     print('You must provide the name and the amount paid when calling this function')
 

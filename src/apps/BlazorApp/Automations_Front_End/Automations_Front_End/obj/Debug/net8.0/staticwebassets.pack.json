@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\source\\projects\\personal-automation\\src\\apps\\BlazorApp\\Automations_Front_End\\Automations_Front_End\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Automations_Front_End.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Automations_Front_End.bundle.scp.css"
+    },
+    {
+      "Id": "D:\\source\\projects\\personal-automation\\src\\apps\\BlazorApp\\Automations_Front_End\\Automations_Front_End\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "D:\\source\\projects\\personal-automation\\src\\apps\\BlazorApp\\Automations_Front_End\\Automations_Front_End\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "D:\\source\\projects\\personal-automation\\src\\apps\\BlazorApp\\Automations_Front_End\\Automations_Front_End\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "D:\\source\\projects\\personal-automation\\src\\apps\\BlazorApp\\Automations_Front_End\\Automations_Front_End\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Automations_Front_End.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Automations_Front_End.props",
+      "PackagePath": "build\\Automations_Front_End.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Automations_Front_End.props",
+      "PackagePath": "buildMultiTargeting\\Automations_Front_End.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Automations_Front_End.props",
+      "PackagePath": "buildTransitive\\Automations_Front_End.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
