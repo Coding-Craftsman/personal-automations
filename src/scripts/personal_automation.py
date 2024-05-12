@@ -34,7 +34,7 @@ def main():
                 import trello_automations as trello_automations
 
                 logger.info('Starting daily chore reset')
-                trello_automations.reset_daily_chores()
+                trello_automations.reset_daily_chores(logger)
             case "coffee-insert-charge":
                 # import the coffee_automations.py
                 import coffee_automations as coffee_automations

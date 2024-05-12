@@ -2,6 +2,8 @@ import os
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 
+logger_heading = 'coffee_automation: '
+
 def coffee_spreadsheet_setup():
     path_to_keyfile = os.environ['GOOGLE_SHEETS_KEY_PATH']
 
@@ -13,22 +15,22 @@ def coffee_spreadsheet_setup():
     return client
 
 def insert_coffee_charge(client, data, doc_key, logger):
-    logger.info(f'Appending coffee charge to the spreadsheet: {data}')
+    logger.info(f'{logger_heading}Appending coffee charge to the spreadsheet: {data}')
 
     sheet = client.open_by_key(doc_key).get_worksheet(0)
 
     sheet.append_row(data, value_input_option='USER_ENTERED', table_range='A1:B2')
 
-    logger.info("Update successful")
+    logger.info(f"{logger_heading}Coffee charge insert successful")
 
 def insert_person_payment(client, data, doc_key, logger):
-    logger.info(f'Appending person payment to the spredsheet: {data}')
+    logger.info(f'{logger_heading}Appending person payment to the spredsheet: {data}')
 
     sheet = client.open_by_key(doc_key).get_worksheet(1)
 
     sheet.append_row(data, value_input_option='USER_ENTERED', table_range='A1:C1')
 
-    logger.info('Update successful!')
+    logger.info(f'{logger_heading}coffee payment insert successful!')
 
 # TODO:
 # Add functionality to read the current balance and when it is at or near negative

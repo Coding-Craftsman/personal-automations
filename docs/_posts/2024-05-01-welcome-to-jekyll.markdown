@@ -1,29 +1,10 @@
 ---
 layout: post
-title:  "Welcome to Jekyll!"
-date:   5-1-2024
-categories: jekyll update
+title:  "Automation documentation is live!"
+date:   5-12-2024
+categories: announcements
 ---
-You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
-Jekyll requires blog post files to be named according to the following format:
+The documentation site is finally live(ish)!  I have spent a little bit of time actually trying to write the docs and make them somewhat presentable.  I still am unable to build/test the site locally because I am to lazy to install what I need on my desktop to actually run the jekyll tools, eventually I will either install them or get docker to work so I can use it :D.
 
-`YEAR-MONTH-DAY-title.MARKUP`
-
-Where `YEAR` is a four-digit number, `MONTH` and `DAY` are both two-digit numbers, and `MARKUP` is the file extension representing the format used in the file. After that, include the necessary front matter. Take a look at the source for this post to get an idea about how it works.
-
-Jekyll also offers powerful support for code snippets:
-
-{% highlight ruby %}
-def print_hi(name)
-  puts "Hi, #{name}"
-end
-print_hi('Tom')
-#=> prints 'Hi, Tom' to STDOUT.
-{% endhighlight %}
-
-Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
-
-[jekyll-docs]: https://jekyllrb.com/docs/home
-[jekyll-gh]:   https://github.com/jekyll/jekyll
-[jekyll-talk]: https://talk.jekyllrb.com/
+The docs have a good start with the two main automations that I have built (Trello board and the base coffee spreadsheet stuff).
