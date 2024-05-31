@@ -1,0 +1,5 @@
+Console commands (from stream):
+aws --region=us-west-2 --endpoint=http://localhost:9324 sqs get-queue-attributes --queue-url http://localhost:9324/000000000000/test
+
+docker run -p 9324:9324 -p 9325:9325 softwaremill/elasticmq
+

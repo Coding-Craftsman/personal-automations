@@ -1,0 +1,47 @@
+﻿@page
+@model PersonalAutomations.Web.Pages.Parameters.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>ActionParameter</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">Action Name</label>
+                @* <input asp-for="SelectedAction" class="form-control" /> *@
+                <select name="Actions" asp-for="SelectedAction" asp-items="Model.ActionsList" class="form-control">
+                    <option selected="selected">--Select--</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActionParameter.ActionID" class="control-label"></label>
+                <input asp-for="ActionParameter.ActionID" class="form-control" />
+                <span asp-validation-for="ActionParameter.ActionID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ActionParameter.Name" class="control-label"></label>
+                <input asp-for="ActionParameter.Name" class="form-control" />
+                <span asp-validation-for="ActionParameter.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

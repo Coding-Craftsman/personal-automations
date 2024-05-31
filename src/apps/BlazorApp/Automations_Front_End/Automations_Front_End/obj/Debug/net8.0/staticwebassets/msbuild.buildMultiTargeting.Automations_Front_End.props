@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\Automations_Front_End.props" />
-</Project>

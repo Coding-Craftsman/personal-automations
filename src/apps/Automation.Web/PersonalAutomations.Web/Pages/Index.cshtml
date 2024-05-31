@@ -1,0 +1,22 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Personal Automations</h1>
+</div>
+
+<div class="row row-cols-1 row-cols-lg-3">
+    @foreach(var automation in Model.ActiveAutomations)
+    {
+        <div class="col">
+            <div class="card h-100 text-white bg-dark rounded-5">
+                @Html.DisplayFor(modelItem => automation.Name)
+
+                <button class="btn btn-primary">Run Automation</button>
+            </div>
+        </div>
+    }
+</div>
