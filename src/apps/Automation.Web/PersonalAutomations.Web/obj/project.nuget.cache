@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OdxL1uW41sGWNOctkWVUSFBS+q09oEH4p+lN4abAJUGm2BYWMlgg0pkyhUGiNBfYTYq+2GRd8jpszE3h0mNIYw==",
+  "dgSpecHash": "goF+YcunTHNy7g3fLSK2AdOp0GnkST/4A5ME70cZDXIsAUtzbmGeLHmIQasvwaKar5+GjNrZZRyxpXeSqoZyGw==",
   "success": true,
   "projectFilePath": "D:\\source\\projects\\personal-automation\\src\\apps\\Automation.Web\\PersonalAutomations.Web\\PersonalAutomations.Web.csproj",
   "expectedPackageFiles": [
@@ -133,6 +133,7 @@
     "C:\\Users\\kfpar\\.nuget\\packages\\nuget.projectmodel\\6.9.1\\nuget.projectmodel.6.9.1.nupkg.sha512",
     "C:\\Users\\kfpar\\.nuget\\packages\\nuget.protocol\\6.9.1\\nuget.protocol.6.9.1.nupkg.sha512",
     "C:\\Users\\kfpar\\.nuget\\packages\\nuget.versioning\\6.9.1\\nuget.versioning.6.9.1.nupkg.sha512",
+    "C:\\Users\\kfpar\\.nuget\\packages\\rabbitmq.client\\6.8.1\\rabbitmq.client.6.8.1.nupkg.sha512",
     "C:\\Users\\kfpar\\.nuget\\packages\\system.codedom\\5.0.0\\system.codedom.5.0.0.nupkg.sha512",
     "C:\\Users\\kfpar\\.nuget\\packages\\system.collections.immutable\\7.0.0\\system.collections.immutable.7.0.0.nupkg.sha512",
     "C:\\Users\\kfpar\\.nuget\\packages\\system.composition\\7.0.0\\system.composition.7.0.0.nupkg.sha512",
@@ -150,7 +151,7 @@
     "C:\\Users\\kfpar\\.nuget\\packages\\system.identitymodel.tokens.jwt\\6.35.0\\system.identitymodel.tokens.jwt.6.35.0.nupkg.sha512",
     "C:\\Users\\kfpar\\.nuget\\packages\\system.io.filesystem.accesscontrol\\5.0.0\\system.io.filesystem.accesscontrol.5.0.0.nupkg.sha512",
     "C:\\Users\\kfpar\\.nuget\\packages\\system.io.pipelines\\7.0.0\\system.io.pipelines.7.0.0.nupkg.sha512",
-    "C:\\Users\\kfpar\\.nuget\\packages\\system.memory\\4.5.4\\system.memory.4.5.4.nupkg.sha512",
+    "C:\\Users\\kfpar\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
     "C:\\Users\\kfpar\\.nuget\\packages\\system.memory.data\\1.0.2\\system.memory.data.1.0.2.nupkg.sha512",
     "C:\\Users\\kfpar\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
     "C:\\Users\\kfpar\\.nuget\\packages\\system.reflection.metadata\\7.0.0\\system.reflection.metadata.7.0.0.nupkg.sha512",

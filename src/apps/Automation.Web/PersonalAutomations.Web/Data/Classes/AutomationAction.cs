@@ -26,5 +26,7 @@
         /// Inactive automations will not show up on the web page.
         /// </summary>
         public bool IsActive { get; set; } = false;
+
+        public List<ActionParameter> Parameters { get; set; } = new List<ActionParameter>();
     }
 }

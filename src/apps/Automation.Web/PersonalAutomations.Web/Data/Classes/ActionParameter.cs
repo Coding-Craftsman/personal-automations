@@ -22,7 +22,7 @@ namespace PersonalAutomations.Web.Data.Classes
         /// <summary>
         /// The key of the parameter to be used in the automation
         /// </summary>
-        public string Name { get; set; } = string.Empty;
+        public string Name { get; set; } = string.Empty;        
 
         /// <summary>
         /// The value of the paramter used in the automation

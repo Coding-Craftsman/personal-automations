@@ -15,11 +15,11 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label class="control-label">Action Name</label>
+                @* <label class="control-label">Action Name</label> *@
                 @* <input asp-for="SelectedAction" class="form-control" /> *@
-                <select name="Actions" asp-for="SelectedAction" asp-items="Model.ActionsList" class="form-control">
+               @*  <select name="Actions" asp-for="SelectedAction" asp-items="Model.ActionsList" class="form-control">
                     <option selected="selected">--Select--</option>
-                </select>
+                </select> *@
             </div>
             <div class="form-group">
                 <label asp-for="ActionParameter.ActionID" class="control-label"></label>

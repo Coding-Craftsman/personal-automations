@@ -21,7 +21,7 @@ namespace PersonalAutomations.Web.Pages.Parameters
 
         public IActionResult OnGet()
         {
-            setupActionList();
+            //setupActionList();
 
             return Page();
         }
@@ -29,18 +29,18 @@ namespace PersonalAutomations.Web.Pages.Parameters
         [BindProperty]
         public ActionParameter ActionParameter { get; set; } = default!;
 
-        [BindProperty]
-        public List<SelectListItem> ActionsList { get; set; } = default!;
+        //[BindProperty]
+        //public List<SelectListItem> ActionsList { get; set; } = default!;
 
-        [BindProperty]
-        public string SelectedAction { get; set; }
+        //[BindProperty]
+        //public string SelectedAction { get; set; }
 
         // To protect from overposting attacks, see https://aka.ms/RazorPagesCRUD
         public async Task<IActionResult> OnPostAsync()
         {
             if (!ModelState.IsValid)
             {
-                setupActionList();
+                //setupActionList();
                 return Page();
             }
 
@@ -51,14 +51,14 @@ namespace PersonalAutomations.Web.Pages.Parameters
             return RedirectToPage("./Index");
         }
 
-        private void setupActionList()
-        {
-            ActionsList = _context.AutomationActions.Where(a => a.IsActive).Select(a =>
-                                                            new SelectListItem
-                                                            {
-                                                                Value = a.ID.ToString(),
-                                                                Text = a.Name
-                                                            }).ToList();
-        }
+        //private void setupActionList()
+        //{
+        //    ActionsList = _context.AutomationActions.Where(a => a.IsActive).Select(a =>
+        //                                                    new SelectListItem
+        //                                                    {
+        //                                                        Value = a.ID.ToString(),
+        //                                                        Text = a.Name
+        //                                                    }).ToList();
+        //}
     }
 }

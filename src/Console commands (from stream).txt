@@ -1,5 +1,10 @@
 Console commands (from stream):
 aws --region=us-west-2 --endpoint=http://localhost:9324 sqs get-queue-attributes --queue-url http://localhost:9324/000000000000/test
 
+aws --region=us-west-2 --endpoint=http://localhost:9324 sqs list-queues
+
+aws --region=us-west-2 --endpoint=http://localhost:9324 sqs create-queue --queue-name=test
+
 docker run -p 9324:9324 -p 9325:9325 softwaremill/elasticmq
 
+docker run --rm -p 15672:15672 -p 5672:5672 -e RABBITMQ_DEFAULT_USER=user -e RABBITMQ_DEFAULT_PASS=password -e RABBITMQ_DEFAULT_VHOST=my_vhos rabbitmq:3.13.3-management-alpine
