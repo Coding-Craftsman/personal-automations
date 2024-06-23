@@ -15,7 +15,7 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.ActionParameter[0].ActionID)
+                @Html.DisplayNameFor(model => model.ActionParameter[0].AutomationActionID)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ActionParameter[0].Name)
@@ -27,7 +27,7 @@
 @foreach (var item in Model.ActionParameter) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.ActionID)
+                @Html.DisplayFor(modelItem => item.AutomationActionID)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)

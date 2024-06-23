@@ -12,8 +12,8 @@ using PersonalAutomations.Web.Data;
 namespace PersonalAutomations.Web.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240531105814_automation_data")]
-    partial class automation_data
+    [Migration("20240623123505_add_param_action_key")]
+    partial class add_param_action_key
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -244,6 +244,8 @@ namespace PersonalAutomations.Web.Data.Migrations
 
                     b.HasKey("ID");
 
+                    b.HasIndex("AutomationActionID");
+
                     b.ToTable("ActionParameters");
                 });
 
@@ -340,6 +342,20 @@ namespace PersonalAutomations.Web.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PersonalAutomations.Web.Data.Classes.ActionParameter", b =>
+                {
+                    b.HasOne("PersonalAutomations.Web.Data.Classes.AutomationAction", null)
+                        .WithMany("Parameters")
+                        .HasForeignKey("AutomationActionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PersonalAutomations.Web.Data.Classes.AutomationAction", b =>
+                {
+                    b.Navigation("Parameters");
                 });
 #pragma warning restore 612, 618
         }

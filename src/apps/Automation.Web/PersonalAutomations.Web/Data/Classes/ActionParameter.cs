@@ -17,7 +17,7 @@ namespace PersonalAutomations.Web.Data.Classes
         /// <summary>
         /// The ID of the Automation Action 
         /// </summary>
-        public int ActionID { get; set; } = 0;
+        public int AutomationActionID { get; set; } = 0;
 
         /// <summary>
         /// The key of the parameter to be used in the automation

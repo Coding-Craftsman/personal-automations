@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using PersonalAutomations.Web.Data.Classes;
 using PersonalAutomations.Web.Interfaces;
 using Newtonsoft.Json;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace PersonalAutomations.Web.Pages
 {
@@ -26,31 +28,32 @@ namespace PersonalAutomations.Web.Pages
 
         public void OnGet()
         {
-            ActiveAutomations = _context.AutomationActions.Where(a => a.IsActive).ToList();
+            ActiveAutomations = _context.AutomationActions.Include(p => p.Parameters).Where(a => a.IsActive).ToList();
         }
 
-        public IActionResult OnPostRunAutomation(string ActionKeyword)
+        public IActionResult OnPostRunAutomation(string ActionKeyword, List<ActionParameter> parameters)
         {
-            var action = _context.AutomationActions.Where(a => a.ActionKeyword == ActionKeyword).FirstOrDefault();
+            var action = _context.AutomationActions.Include(p => p.Parameters).Where(a => a.ActionKeyword == ActionKeyword).FirstOrDefault();
             if (action != null)
             {
-                var parameters = _context.ActionParameters.Where(p => p.ActionID == action.ID).ToList();
-            
-
-                AutomationMessagePayload payload = new AutomationMessagePayload()
+                // Add the values to the parameters before we send it to the message queue
+                foreach(var item in parameters)
                 {
-                    Action = action,
-                    Parameters = parameters
-                };
+                    action.Parameters.Where(p => p.Name == item.Name).First().Value = item.Value;
+                }                
 
-                var messageBody = JsonConvert.SerializeObject(payload);
+                // Serialize the object into Json to send to the message queue
+                var messageBody = JsonConvert.SerializeObject(action);
 
+                // pusht the message to the queue
                 _messageProcessor.PublishMessage(messageBody);
 
                 var AlertMessage = "Message Sent!";
-
+                
+                // set the message to the session so the web page can display it to the user
                 HttpContext.Session.SetString("AlertMessage", AlertMessage);
 
+                // redirect back to the default page so it loads all the automations back up correctly
                 return RedirectToPage("./Index");
             }
 

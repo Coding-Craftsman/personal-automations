@@ -44,7 +44,7 @@ namespace PersonalAutomations.Web.Pages.Parameters
                 return Page();
             }
 
-            //ActionParameter.ActionID = Convert.ToInt32(SelectedAction);
+            //ActionParameter.AutomationActionID = Convert.ToInt32(SelectedAction);
             _context.ActionParameters.Add(ActionParameter);
             await _context.SaveChangesAsync();
 

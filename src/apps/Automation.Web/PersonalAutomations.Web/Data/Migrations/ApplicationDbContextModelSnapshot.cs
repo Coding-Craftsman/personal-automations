@@ -232,7 +232,7 @@ namespace PersonalAutomations.Web.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
 
-                    b.Property<int>("ActionID")
+                    b.Property<int>("AutomationActionID")
                         .HasColumnType("int");
 
                     b.Property<string>("Name")
@@ -241,7 +241,9 @@ namespace PersonalAutomations.Web.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("ActionParameters");
+                    b.HasIndex("AutomationActionID");
+
+                    b.ToTable("ActionParameters", (string)null);
                 });
 
             modelBuilder.Entity("PersonalAutomations.Web.Data.Classes.AutomationAction", b =>
@@ -265,7 +267,7 @@ namespace PersonalAutomations.Web.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("AutomationActions");
+                    b.ToTable("AutomationActions", (string)null);
                 });
 
             modelBuilder.Entity("PersonalAutomations.Web.Data.Classes.MessageHistory", b =>
@@ -285,7 +287,7 @@ namespace PersonalAutomations.Web.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("MessageHistory");
+                    b.ToTable("MessageHistory", (string)null);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -337,6 +339,20 @@ namespace PersonalAutomations.Web.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("PersonalAutomations.Web.Data.Classes.ActionParameter", b =>
+                {
+                    b.HasOne("PersonalAutomations.Web.Data.Classes.AutomationAction", null)
+                        .WithMany("Parameters")
+                        .HasForeignKey("AutomationActionID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("PersonalAutomations.Web.Data.Classes.AutomationAction", b =>
+                {
+                    b.Navigation("Parameters");
                 });
 #pragma warning restore 612, 618
         }

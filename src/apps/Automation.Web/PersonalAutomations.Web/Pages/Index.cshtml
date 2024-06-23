@@ -24,9 +24,27 @@
         <form method="post">
             <div class="col">
                 <div class="card h-100 text-white bg-dark rounded-5">
-                    @Html.DisplayFor(modelItem => automation.Name)
-                    <input type="submit" class="btn btn-primary" asp-page-handler="RunAutomation" asp-route-ActionKeyword="@automation.ActionKeyword" name="action" value="Run Automation" />
+                    @Html.DisplayFor(modelItem => automation.Name)                                        
                 </div>
+                <table class="table table-striped">
+                    <thead>
+                        <th>Parameter Name</th>
+                        <th>Parameter Value</th>
+                    </thead>
+                    <tbody>                                    
+                        @for(var i = 0; i < automation.Parameters.Count; i++)// foreach (var param in automation.Parameters)
+                        {
+                            <tr>
+                                <td>@automation.Parameters.ElementAt(i).Name<input type="hidden" name="[@i].Name" value="@automation.Parameters.ElementAt(i).Name" /></td>
+                                <td><input type="text" name="[@i].Value" /></td>
+                            </tr>
+                                @* @Html.DisplayFor(item => param.Name)
+                                @Html.EditorFor(item => param.Value, "", param.Name) *@
+                        }
+                    </tbody>
+                </table>
+
+                <input type="submit" class="btn btn-primary" asp-page-handler="RunAutomation" asp-route-ActionKeyword="@automation.ActionKeyword" name="action" value="Run Automation" />
             </div>
         </form>
     }

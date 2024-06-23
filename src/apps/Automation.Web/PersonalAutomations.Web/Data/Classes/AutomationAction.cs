@@ -27,6 +27,6 @@
         /// </summary>
         public bool IsActive { get; set; } = false;
 
-        //public List<ActionParameter> Parameters { get; set; } = new List<ActionParameter>();
+        public ICollection<ActionParameter> Parameters { get; set; } = new List<ActionParameter>();
     }
 }

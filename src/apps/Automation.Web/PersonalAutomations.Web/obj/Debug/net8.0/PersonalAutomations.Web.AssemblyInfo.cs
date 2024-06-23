@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PersonalAutomations.Web")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+35643e2f6666b29bd624f624e3b686ee248a4170")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+807984c29ff194e779de4d6e1192a683b89c475e")]
 [assembly: System.Reflection.AssemblyProductAttribute("PersonalAutomations.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PersonalAutomations.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
