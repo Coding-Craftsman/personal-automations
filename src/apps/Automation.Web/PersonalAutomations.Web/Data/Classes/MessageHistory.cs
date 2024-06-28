@@ -12,5 +12,7 @@
         public DateTime EventTime { get; set; } = DateTime.MinValue;
 
         public string Message { get; set; } = string.Empty;
+
+        public string User { get; set; } = string.Empty;
     }
 }

@@ -2,6 +2,6 @@
 {
     public interface IMessageProcessor
     {
-        public void PublishMessage(string message);
+        public void PublishMessage(string message, string Originator);
     }
 }

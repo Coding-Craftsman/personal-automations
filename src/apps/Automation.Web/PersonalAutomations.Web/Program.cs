@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using PersonalAutomations.Web.Data;
+using PersonalAutomations.Web.Data.Classes;
 using PersonalAutomations.Web.Interfaces;
 using RabbitMQ.Client.Events;
 
@@ -14,20 +16,23 @@ var queueName = builder.Configuration.GetValue<string>("queueName");
 var username = builder.Configuration.GetValue<string>("rabbitusername");
 var password = builder.Configuration.GetValue<string>("password");
 
-builder.Services.AddScoped<IMessageProcessor>(x =>
- new RabbitMQMessageProcessor(
-     hostName,
-     vhostName,
-     queueName,
-     username,
-     password));
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
+
+builder.Services.AddScoped<IMessageProcessor>(x =>
+ new RabbitMQMessageProcessor(
+     hostName,
+     vhostName,
+     queueName,
+     username,
+     password,
+     x.GetService<ApplicationDbContext>()));
+
+builder.Services.AddScoped<IEmailSender>(x => new AutomationEmailSender(x.GetService<ApplicationDbContext>()));
 builder.Services.AddRazorPages();
 
 builder.Services.AddSession();

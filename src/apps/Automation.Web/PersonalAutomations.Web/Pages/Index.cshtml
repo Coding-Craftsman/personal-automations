@@ -1,4 +1,9 @@
 ﻿@page
+
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -8,44 +13,47 @@
     <h1 class="display-4">Personal Automations</h1>
 </div>
 
-@if (HttpContext.Session.TryGetValue("AlertMessage", out byte[] res))
+@if (SignInManager.IsSignedIn(User))
 {
-    <div class="alert alert-success alert-dismissible fade show">
-        @HttpContext.Session.GetString("AlertMessage")
-        <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-
-    HttpContext.Session.Remove("AlertMessage");
-}
-
-<div class="row row-cols-1 row-cols-lg-3">
-    @foreach(var automation in Model.ActiveAutomations)
+    @if (HttpContext.Session.TryGetValue("AlertMessage", out byte[] res))
     {
-        <form method="post">
-            <div class="col">
-                <div class="card h-100 text-white bg-dark rounded-5">
-                    @Html.DisplayFor(modelItem => automation.Name)                                        
-                </div>
-                <table class="table table-striped">
-                    <thead>
-                        <th>Parameter Name</th>
-                        <th>Parameter Value</th>
-                    </thead>
-                    <tbody>                                    
-                        @for(var i = 0; i < automation.Parameters.Count; i++)// foreach (var param in automation.Parameters)
-                        {
-                            <tr>
-                                <td>@automation.Parameters.ElementAt(i).Name<input type="hidden" name="[@i].Name" value="@automation.Parameters.ElementAt(i).Name" /></td>
-                                <td><input type="text" name="[@i].Value" /></td>
-                            </tr>
-                                @* @Html.DisplayFor(item => param.Name)
-                                @Html.EditorFor(item => param.Value, "", param.Name) *@
-                        }
-                    </tbody>
-                </table>
+        <div class="alert alert-success alert-dismissible fade show">
+            @HttpContext.Session.GetString("AlertMessage")
+            <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
 
-                <input type="submit" class="btn btn-primary" asp-page-handler="RunAutomation" asp-route-ActionKeyword="@automation.ActionKeyword" name="action" value="Run Automation" />
-            </div>
-        </form>
+        HttpContext.Session.Remove("AlertMessage");
     }
-</div>
+
+    <div class="row row-cols-1 row-cols-lg-3">
+        @foreach(var automation in Model.ActiveAutomations)
+        {
+            <form method="post">
+                <div class="col">
+                    <div class="card h-100 text-white bg-dark rounded-5">
+                        @Html.DisplayFor(modelItem => automation.Name)                                        
+                    </div>
+                    <table class="table table-striped">
+                        <thead>
+                            <th>Parameter Name</th>
+                            <th>Parameter Value</th>
+                        </thead>
+                        <tbody>                                    
+                            @for(var i = 0; i < automation.Parameters.Count; i++)// foreach (var param in automation.Parameters)
+                            {
+                                <tr>
+                                    <td>@automation.Parameters.ElementAt(i).Name<input type="hidden" name="[@i].Name" value="@automation.Parameters.ElementAt(i).Name" /></td>
+                                    <td><input type="text" name="[@i].Value" /></td>
+                                </tr>
+                                    @* @Html.DisplayFor(item => param.Name)
+                                    @Html.EditorFor(item => param.Value, "", param.Name) *@
+                            }
+                        </tbody>
+                    </table>
+
+                    <input type="submit" class="btn btn-primary" asp-page-handler="RunAutomation" asp-route-ActionKeyword="@automation.ActionKeyword" name="action" value="Run Automation" />
+                </div>
+            </form>
+        }
+    </div>
+}

@@ -1,4 +1,6 @@
-﻿using RabbitMQ.Client;
+﻿using PersonalAutomations.Web.Data;
+using PersonalAutomations.Web.Data.Classes;
+using RabbitMQ.Client;
 
 namespace PersonalAutomations.Web.Interfaces
 {
@@ -14,18 +16,22 @@ namespace PersonalAutomations.Web.Interfaces
         IConnection connection;
         IModel channel;
 
+        ApplicationDbContext _context;
+
         public RabbitMQMessageProcessor(
             string HostName, 
             string VHostName, 
             string Queue, 
             string UserName, 
-            string Password)
+            string Password,
+            ApplicationDbContext context)
         {
             hostname = HostName;
             vhost = VHostName;
             queueName = Queue;
             username = UserName;
             password = Password;
+            _context = context;
 
             ConnectionFactory factory = new ConnectionFactory();
             factory.UserName = username;
@@ -49,13 +55,21 @@ namespace PersonalAutomations.Web.Interfaces
             channel.Close();
         }
 
-        public void PublishMessage(string message)
+        public void PublishMessage(string message, string Originator)
         {
+            var history = new MessageHistory()
+            {
+                EventTime = DateTime.Now,
+                Message = message,
+                User = Originator
+            };
+
+            _context.MessageHistory.Add(history);
+            _context.SaveChanges();
+
             byte[] body = System.Text.Encoding.UTF8.GetBytes(message);
 
             channel.BasicPublish(exchangeName, "", null, body);
-
-            // should display some sort of message and reload the original page??
         }
     }
 }

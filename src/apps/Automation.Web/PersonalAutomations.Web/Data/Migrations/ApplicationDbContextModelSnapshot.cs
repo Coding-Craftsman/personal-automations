@@ -243,7 +243,7 @@ namespace PersonalAutomations.Web.Data.Migrations
 
                     b.HasIndex("AutomationActionID");
 
-                    b.ToTable("ActionParameters", (string)null);
+                    b.ToTable("ActionParameters");
                 });
 
             modelBuilder.Entity("PersonalAutomations.Web.Data.Classes.AutomationAction", b =>
@@ -267,7 +267,32 @@ namespace PersonalAutomations.Web.Data.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("AutomationActions", (string)null);
+                    b.ToTable("AutomationActions");
+                });
+
+            modelBuilder.Entity("PersonalAutomations.Web.Data.Classes.AutomationEmail", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MessageBody")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("MessageSubject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("RegistrationEmails");
                 });
 
             modelBuilder.Entity("PersonalAutomations.Web.Data.Classes.MessageHistory", b =>
@@ -285,9 +310,13 @@ namespace PersonalAutomations.Web.Data.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("User")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("ID");
 
-                    b.ToTable("MessageHistory", (string)null);
+                    b.ToTable("MessageHistory");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

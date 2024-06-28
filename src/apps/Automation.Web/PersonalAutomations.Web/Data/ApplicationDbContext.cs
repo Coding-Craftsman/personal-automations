@@ -13,6 +13,8 @@ namespace PersonalAutomations.Web.Data
 
         public DbSet<MessageHistory> MessageHistory { get; set; }
 
+        public DbSet<AutomationEmail> RegistrationEmails { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
